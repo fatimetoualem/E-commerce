@@ -1,0 +1,89 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/order.css");?>" />
+</head>
+<section>
+    <div class="order">
+        <div class="vos-adress">
+            <div class="information-perssonelle">
+                <div class="your-address">
+                    <div class="title-address">
+                        <h2>Votre adresse de livraison </h2>
+                        <a href="#"><i class="fa-solid fa-pencil"></i></a>
+                    </div> 
+                    <p><span><?=$customer->getGender();?></span> <?=$customer->getFirstName();?></p>
+                    <p><?=$customer->getName();?></p>
+                    <p><?=$customer->getEmail();?></p>
+                    <p><?=$customer->getAddress();?></p>
+                    <p><?=$customer->getPostalCode();?></p>
+                    <p><?=$customer->getCity();?></p>
+                </div> 
+                <div class="new-address">
+                    <div class="title-address">
+                        <h2>Coordonnées</h2>
+                        <a href="#"><i class="fa-solid fa-pencil"></i></a>
+                    </div> 
+                    <form action="livraison.php" method="POST">
+                        <p>Votre numéro de téléphone est requis pour recevoir les informations de votre commande par SMS.</p>
+                        <label for="newAddress">Telephone mobile</label>
+                        <input type="text" name="newAddress" id="newAddress"/>
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="product-summary"> 
+            <div class="product">
+                <h2>Récapitulatif</h2>
+                    <div class="product-title">
+                        <p><?=$nProducts;?> articles</p>
+                        <i class="fa-solid fa-chevron-down" id="chevronDown"></i>
+                    </div>
+                    <?php foreach($products as $index => $product) :?>
+                        <div class="details-product">
+                            <div class="image">
+                                <img src="<?=asset('images/' .$product->getImage());?>" alt="teint" /><br>  
+                            </div>
+                            <div class="detail">
+                                <h2><?= nl2br($product->getTitle());?></h2> 
+                                <p><?= nl2br($product->getDescription());?></p>
+                                <?php if ($product->getQuantity() == $quantities[$index]){?>
+                                    <option value="<?=$quantities[$index];?>" selected ><?= "Quantité : ".$quantities[$index];?></option>
+                                <?php } 
+                                else {?>
+                                    <option value="<?=$quantities[$index];?>"><?= "Quantité : ".$quantities[$index];?></option>
+                                <?php } ?> 
+                                <h3><?= nl2br($product->getPrice() * $quantities[$index] ."€");?></h3>  
+                            </div>
+                        </div>
+                    <?php endforeach ?> 
+                    <div class="delivery">
+                        <p>Livraison</p>
+                        <span>Offre</span>
+                    </div>
+                    <div class="total">
+                        <p>Total produit(s)</p>
+                        <h3><?= $total ."€";?></h3>
+                    </div>
+                    <a href="<?=constructUrl("/payment");?>">valider la livraison</a>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+
+<script>
+    var chevronDown = document.getElementById("chevronDown");
+    var product = document.querySelectorAll(".details-product");
+    chevronDown.addEventListener("click", ()=>{
+        chevronDown.classList.toggle("toggle");
+        for(let i = 0; i<product.length; i++){
+            if(chevronDown.classList[2] === "toggle"){
+                product[i].style.display="flex";
+            }
+            else{
+                product[i].style.display="none";
+            }
+        }   
+    })
+</script>

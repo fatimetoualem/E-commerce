@@ -1,0 +1,25 @@
+section{
+    max-width: 1500px;
+    width: 60%;
+    margin: 0px auto;
+}
+.information-order{
+    text-align: center;
+}
+.information-order h2{
+    color: #c71585;
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+.information-order h1{
+    background-color: #c71585;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    color: white;
+    text-transform: uppercase;
+    text-align: start;
+}
+

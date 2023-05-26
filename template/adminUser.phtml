@@ -1,0 +1,49 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/base.css");?>" />
+    <link rel="stylesheet" href="<?=asset("css/adminUser.css");?>" />
+</head>
+<header>
+    <div class="logo">
+        <h1><span>Fati</span> Beauty</h1>
+    </div>
+    <ul>
+        <li><a href="<?=constructUrl('/admin');?>">Product</a></li>
+        <li><a href="<?=constructUrl('/adminUser');?>">Users</a></li>
+        <li><a href="<?=constructUrl('/profile');?>">Mon profil</a></li>
+    </ul>
+</header>
+<section class="header-product">
+    <h2>Les produits</h2>
+</section>
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th>Id utilisateur
+                <th>genre</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Mail</th>
+                <th>Adresse</th>
+                <th>Code postal</th>
+                <th>Ville</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($resultUsers as $result):?> 
+                <tr class="teste">
+                        <td><?=$result->getIdUser();?></td>
+                        <td><?=$result->getGender();?></td>
+                        <td><?=$result->getName();?></td>
+                        <td><?=$result->getFirstName();?></td>
+                        <td><?=$result->getEmail();?></td>
+                        <td><?=$result->getAddress();?></td>
+                        <td><?=$result->getPostalCode();?></td>
+                        <td><?=$result->getCity();?></td>
+                        <td><a href="<?=constructUrl('/deleteAdminUser', ['id' => $result->getIdUser()]);?>">Supprimer</a> </td>   
+                </tr>
+            <?php endforeach;?>    
+        </tbody>    
+    </table>
+</section>

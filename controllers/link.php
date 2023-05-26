@@ -1,0 +1,7 @@
+<?php
+
+const  ID_CATEGORY_TEINT = 1;
+const  ID_CATEGORY_YEUX = 2;
+const ID_CATEGORY_LEVRES = 3;
+const ID_CATEGORY_ACCESOIRE = 4;
+const ID_CATEGORY_ONGLES = 5;

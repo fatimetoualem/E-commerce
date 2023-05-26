@@ -1,0 +1,68 @@
+header{
+    border: 1px solid red;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+header .logo{
+    margin-top: 40px;
+    position: absolute;
+    top: 0;
+}
+a{
+    text-decoration: none;
+}
+header ul{
+    margin-bottom: 200px;
+    list-style: none;
+}
+header ul li{
+    margin-top: 18px;
+}
+header ul a{
+    font-size: 23px;
+}
+.header-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 81.5%;
+    margin-left: 90px;
+}
+.header-product a{
+    background-color: #c31ea5;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+section{
+    margin-left: 250px;
+}
+table{
+    margin-top: 70px;
+}
+th{
+    width: 800px;
+    padding-bottom: 15px;
+}
+td{
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 800px;
+    text-align: center;
+}
+img{
+    width: 60px;
+}

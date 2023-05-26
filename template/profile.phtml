@@ -1,0 +1,81 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/profile.css");?>">
+</head>
+<section>
+    <div class="nameUser">
+        <p>Bonjour</p>
+        <h1><?=$customer->getFirstName();?></h1>
+    </div>
+    <div class="Account">
+        <h2 class="title-account">Mon Compte</h2>
+        <p class="p-account">Retrouvez et mettez à jour ici toutes vos informations personnelles.</p>
+        <h1>Mon profile</h1>
+        <div class="profile">
+            <div class="personal-informations">
+                <div class="profile-title">
+                    <h3>Mes informations personnelles</h3>
+                    <a href="<?=constructUrl('/editPersonalInformation');?>"><i class="fa-solid fa-pencil"></i></a>
+                </div>
+                <p><?=$customer->getGender();?></p>
+                <p><?=$customer->getFirstName();?></p>
+                <p><?=$customer->getName();?></p>
+            </div>
+            <div class="personal-informations">
+                <div class="profile-title">
+                    <h3>Mon adresse e-mail</h3>
+                    <a href="<?=constructUrl('/editEmail');?>"><i class="fa-solid fa-pencil"></i></a>
+                </div>
+                <p><?=$customer->getEmail();?></p>
+            </div>
+            <div class="personal-informations">
+                <div class="profile-title">
+                    <h3>Mon mot de passe</h3>
+                    <a href="<?=constructUrl('/editPassword');?>"><i class="fa-solid fa-pencil"></i></a>
+                </div>
+                <p>*******************</p>
+            </div>
+            <div class="personal-informations">
+                <div class="profile-title">
+                    <h3>Mes coordonnées</h3>
+                    <a href="#"><i class="fa-solid fa-pencil"></i></a>
+                </div>
+                <p><?=$customer->getEmail();?></p>
+            </div>
+        </div>
+        <h2 class="title-account">Mes commandes</h2>
+        <p class="p-account">Retrouvez ici les détails de votre commande.</p>
+        <h1>Vos commandes précédentes</h1>
+        <section class="products" id="products">
+            <?php foreach($orders as $order) :?>
+                <div class="orders">
+                    <div class="numOrderAndDate">
+                        <p><?= $order->getNOrder();?></p>
+                        <p><?=$order->getFormattedCreatedAt();?></p>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                    <div class="product">
+                        <?php $orderProds = $orderModel->getProductsByOrderId($order->getIdOrder());?> 
+                        <?php foreach($orderProds as $orderProd):?>
+                            <?php $productId = $orderProd["productId"];?>
+                            <?php $product = $productModel->getProductById($productId);?>
+                            <div class="image">
+                                <img src="<?=asset('images/' .$product->getImage());?>" alt="" />
+                            </div>
+                        <?php endforeach ?>    
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </section>
+
+        <div class="btn admin">
+            <?php if($_SESSION["user"]["role"] == "admin") :?>
+                <a href="<?=constructUrl('/admin')?>">Page administration</a>
+            <?php endif ?>    
+        </div>
+
+        <div class="btn">
+            <a href="<?=constructUrl('/logout')?>">Déconexion</a>
+        </div>
+
+    </div>
+</section>

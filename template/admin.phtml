@@ -1,0 +1,65 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/base.css");?>" />
+    <link rel="stylesheet" href="<?=asset("css/admin.css");?>" />
+</head>
+<header>
+    <div class="logo">
+        <h1><span>Fati</span> Beauty</h1>
+    </div>
+    <ul>
+        <li><a href="#">Product</a></li>
+        <li><a href="<?=constructUrl('/adminUser');?>">Users</a></li>
+        <li><a href="<?=constructUrl('/profile');?>">Mon profil</a></li>
+    </ul>
+</header>
+<section class="header-product">
+    <h2>Les produits</h2>
+    <a href="<?=constructUrl('/addProductAdmin');?>">Ajouter un Produit</a>
+</section>
+<section>
+   <table>
+    <thead>
+        <tr>
+            <th>Id produit</th>
+            <th>Titre</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($resultProducts as $result):?> 
+            <tr class="teste">
+                    <td><?=$result->getIdProduct();?></td>
+                    <td><?=$result->getTitle();?></td>
+                    <td><img src="<?=asset('images/' .$result->getImage());?>" alt="" /></td>
+                    <td><?=$result->getDescription();?></td>
+                    <td><?=$result->getQuantity();?></td>
+                    <td><?=$result->getPrice();?></td>
+                    <td>Action</td>
+                    <td><a href="<?=constructUrl('/editAdmin', ['id' => $result->getIdProduct()]);?>">Modifier</a></td>
+                    <td><a href="<?=constructUrl('/deleteAdmin', ['id' => $result->getIdProduct()]);?>">Supprimer</a> </td>   
+            </tr>
+        <?php endforeach;?>    
+    </tbody>    
+   </table>
+</section>
+<!-- <div>
+    <h2>User</h2>
+    <php foreach($resultUsers as $result):?>
+        <p><=$result->getName();?></p>
+        <p><=$result->getEmail();?></p>
+    <php endforeach;?>   
+</div>  -->
+
+<!-- <div>
+    <h2>Products</h2>
+    <php foreach($resultProducts as $result):?>
+        <h2><=$result->getTitle();?></h2>
+        <p> Prix: <=$result->getPrice();?></p>
+    <php endforeach;?>   
+</div> -->

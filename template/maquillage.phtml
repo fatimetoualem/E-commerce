@@ -1,0 +1,18 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/maquillage.css");?>" />
+</head>  
+
+<section class="products">
+        <?php foreach($result as $product) :?>
+            <div class="product">
+                <div class="image">
+                    <img src="<?= asset('images/' .$product->getImage());?>" class="img-fluid" alt="teint"/><br>
+                </div>
+                <h2><?= $product->getTitle();?></h2>
+                <p><?= $product->getDescription();?></p>
+                <strong><?="Prix " . $product->getPrice() ."£";?></strong><br>
+                <strong><?= "Quantité : " . $product->getPrice();?></strong>
+                <a href="<?=constructUrl('/product', ['id' => $product->getIdProduct()]);?>">Commender</a>
+            </div>
+        <?php endforeach ?>
+</section>

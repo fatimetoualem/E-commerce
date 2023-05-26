@@ -1,0 +1,21 @@
+<section class="product-details">
+    <div class="product-details-left">
+        <img src="<?= asset('images/' .$product->getImage());?>" alt="teint" /><br>
+    </div>
+    <div class="product-details-rigth">
+        <h2><?= nl2br($product->getTitle());?></h2>
+        <p><?= nl2br($product->getDescription());?></p>
+        <h3><?= $product->getPrice() ."€";?></h3><br>
+        <form action="<?= constructUrl('/addToCart');?>" method="POST" class="quantity-and-btn">
+            <input type="hidden" name="id-product" value="<?=$product->getIdProduct();?>">
+            <label for="quantity">Quantité : </label>
+                <select id="quantity" name="quantity">
+                    <?php for ($i = 1; $i <= $product->getQuantity(); $i++): ?>
+                        <option value="<?=$i;?>"><?=$i;?></option>
+                    <?php endfor; ?>
+                </select>
+            <input type="submit" value="Ajouter au panier">
+        </form>
+        <a href="#">Ajouter au favorites</a>
+    </div>
+</section>    

@@ -1,0 +1,14 @@
+<section>
+    <form action="<?=constructUrl('/editPersonalInformation',)?>" method="POST">
+        <h2>Modifier mes informations personnelles</h2>
+        <div>
+            <input type="radio" name="gender" value="<?=$gender;?>" checked/>
+            <label>Femme</label>
+            <input type="radio" name="gender" value="Monsieur"/>
+            <label> Homme </label>
+        </div>
+        <input type="text" name="name" value="<?=$name;?>">
+        <input type="text" name="firstName" value="<?=$firstName;?>"><br>
+        <input type="submit" name="submit">
+    </form>
+</section>

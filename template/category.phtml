@@ -1,0 +1,14 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/category.css");?>" />
+</head>
+<section class="products" id="products">
+    <?php foreach($products as $product) :?>
+        <div class="product">
+            <img src="<?= asset('images/' .$product->getImage());?>" alt="teint" /><br>
+            <h2><?= $product->getTitle();?></h2>
+            <p><?= $product->getDescription();?></p>
+            <h3><?= $product->getPrice() ."€";?></h3><br>
+            <a href="<?=constructUrl('/product', ['id' => $product->getIdProduct()]);?>">Commender</a>
+        </div>
+    <?php endforeach ?>
+</section>

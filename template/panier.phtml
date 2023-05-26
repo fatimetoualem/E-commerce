@@ -1,0 +1,71 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/panier.css");?>"/>
+</head>
+<section>
+    <?php if($_SESSION["cart"]):?>
+        <div class="details-panier">
+            <div class="products">
+                <?php foreach($products as $index => $product) :?>
+                    <div class="product">
+                        <div class="image">
+                            <img src="<?=asset('images/' .$product->getImage());?>" alt="teint" /><br>
+                        </div>
+                        <div class="details-product">
+                            <div class="title-description">
+                                <div>
+                                    <h2><?= nl2br($product->getTitle());?></h2>
+                                    <p><?= nl2br($product->getDescription());?></p>
+                                </div>
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="price-quantity">
+                                <div class="quantity-groupe">
+                                   <?php if ($product->getQuantity() == $quantities[$index]){?>
+                                        <option value="<?=$quantities[$index];?>" selected ><?= "Quantité : ".$quantities[$index];?></option>
+                                    <?php } 
+                                    else {?>
+                                        <option value="<?=$quantities[$index];?>"><?= "Quantité : ".$quantities[$index];?></option>
+                                    <?php } ?>
+
+                                    <a href="<?=constructUrl('/delete', ['del' => $product->getIdProduct()]);?>">Supprimer</a>
+                                </div>
+                                <h3><?= nl2br($product->getPrice() * $quantities[$index] ."€");?></h3>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>    
+            <div class="cart-sum">
+                <div class="cart-sum1">
+                    <div>
+                        <p>Total des articles</p>
+                        <p>Estimation de livraison</p>
+                    </div>
+                    <div>
+                        <h3><?= $total ."€";?></h3>
+                        <h3>Offerte</3>
+                    </div> 
+                </div>
+                <div class="cart-sum-total">
+                    <div class="cart-sum-price-total">
+                        <p class="">Total : </p>
+                        <h3><?= $total ."€";?></h3>
+                    </div>                    
+                    <?php if (isConnected()){?>
+                        <div><a href="<?=constructUrl("/livraison");?>">Valider votre panier</a></div>
+                    <?php } 
+                    else {?>
+                        <div><a href="<?=constructUrl("/login", ["redirectTo"=>"livraison"]);?>">Valider votre panier</a></div>
+                    <?php };?> 
+                </div>
+            </div>
+        </div>        
+    <?php else :?>
+        <div class="panier-vide">
+            <h2>Panier vide</h2>
+            <p>Votre panier est vide pour le moment.</p>
+            <a href="<?=constructUrl("/")?>">Retournez aux ventes</a>
+        </div>  
+    <?php endif;?>
+</section>
+<script src="updateTotal.js"></script>

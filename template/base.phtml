@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="<?=asset("css/base.css");?>" />
+        <link rel="stylesheet" href="<?=asset("css/product.css");?>" />
+        <link rel="stylesheet" href="<?=asset("css/inscription.css");?>" />
+    </head>
+
+    <body>
+        <header>
+            <!-- <div class="header1"> -->
+                <div class="header">
+                    <div class="titre">
+                        <a href="<?=constructUrl('/');?>">Maquillage</a>
+                        <a href="#">Cosmetique</a>
+                    </div>
+                    <div class="logo">
+                        <h1><span>Fati</span>Beauty</h1>
+                    </div>
+                    <div class="icone-menu">
+                        <div class="icons">
+                            <a href="<?=constructUrl("/favorites");?>">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+
+                            <a href="<?=constructUrl("/profile");?>">
+                                <i class="fa-regular fa-user"></i>
+                            </a>
+                            <i class="fa-solid fa-camera"></i>
+                            <a href="<?=constructUrl("/panier");?>">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="panier"><?=$nProducts;?></span>
+                            </a>
+                        </div>
+                        <div class="menu" onclick="toggleMenu();"></div>
+                    </div>   
+                </div>
+                <form class="form" data-url="<?=constructUrl("/search");?>">
+                    <label for="search"></label>
+                    <input type="search" name="search" id="search" placeholder="Rechercher un produit.....">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
+
+                <div id="container"></div>
+                
+                <nav class="link">
+                    <ul>
+                        <li><a href="<?=constructUrl('/category', ['id' => ID_CATEGORY_TEINT]);?>" class="teint">Teint</a></li>
+                        <li><a href="<?=constructUrl('/category', ['id' => ID_CATEGORY_YEUX]);?>">Yeux</a></li>
+                        <li><a href="<?=constructUrl('/category', ['id' => ID_CATEGORY_LEVRES]);?>">Levres</a></li>
+                        <li><a href="<?=constructUrl('/category', ['id' => ID_CATEGORY_ACCESOIRE]);?>">Accesoire</a></li>
+                        <li><a href="<?=constructUrl('/category', ['id' => ID_CATEGORY_ONGLES]);?>">Ongles</a></li>
+                    </ul>
+                </nav>  
+        </header>
+        <main>
+            
+            <?php if (isset($flashMessage) && $flashMessage): ?>
+                <p class="success"><?=$flashMessage;?></p>
+            <?php endif; ?>
+
+            <?php include $template .".phtml" ?>
+        </main>
+        <footer>
+            <div class="newsletter">
+                <div class="title_newsleter">
+                <h2>Inscrivez-vous à la newsletter</h2>
+                <p>Pour recevoir nos actualités et offres promotionnelles</p>
+                </div>
+                <div class="formullaire_newsletter">
+                    <form method="POST" action="newslette.php">
+                        <label for="email">Votre adresse e-mail</label>
+                        <input type="email" id="email" name="email">
+                        <input type="submit" value="Inscrivez-moi">
+                    </form>
+                </div>
+            </div>
+            <div class="infos">
+                <div class="service-client">
+                    <h1><i class="fa-solid fa-question"></i></h1>
+                    <h2>Aid & Contact</h2>
+                    <ul>
+                        <li><a href="#">Par telephone : 064655843</a></li>
+                        <li><a href="#">Reyoure & Remboursement</a></li>
+                        <li><a href="#">Commendes & livraison</a></li>
+                    </ul>
+                </div>
+                <div class="paiment">
+                    <h1><i class="fa-regular fa-credit-card"></i></h1>
+                    <h2>Moyens de paiement</h2>
+                    <div class="card">
+                        <img src="../images/cards.png" alt="cards"/>
+                    </div>
+                </div>
+                <div class="suivez-nous">
+                    <h1><i class="fa-regular fa-thumbs-up"></i></h1>
+                    <h2>Suivez-nous</h2>
+                    <div>
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-snapchat"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="../script/menu.js"></script>
+        
+        <script src="../script/search.js"></script>
+    </body>
+</html>    

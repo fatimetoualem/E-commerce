@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/login.css");?>" />
+</head>
+<section>
+    <div class="formulaire">
+        <p class="request-message">Veuillez remplir tous les champs !</p>
+        <form method="POST">
+            <h2><span>Fati</span>Beauty</h2>
+            <label for="email">Adresse mail</label>
+            <input type="texte" name="email" id="email">
+            <label for="password">Mot de passe</label>
+            <input type="texte" name="password" id="password">
+            <?php if($error != null) : ?>
+            <p class="error"><?=$error;?></p>
+            <?php endif; ?>
+            <button>Se connecter</button>
+        </form>
+        <p class="information">Nouveau sur fati beauty ?<a href="<?=constructUrl('/inscription')?>">S'inscrire</a></p>  
+    </div>
+</section>

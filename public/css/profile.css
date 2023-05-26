@@ -1,0 +1,111 @@
+main{
+    background-color: #f8f8f8;
+}
+section .nameUser{
+    background: rgb(199,21,133);
+    background: linear-gradient(90deg, rgba(199,21,133,1) 0%, rgba(199,21,133,1) 0%, rgba(0,0,0,1) 100%);
+    height: 25vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+section .Account .title-account,
+section .Account .p-account{
+    text-align: center;
+}
+section .Account .title-account{
+    font-size: 29px;
+    margin-bottom: 12px;
+    padding-top: 40px;
+    color: #3c3439;
+}
+
+section .Account{
+    max-width: 1500px;
+    width: 60%;
+    margin: 0px auto;
+}
+section .Account h1{
+    background-color: #c71585;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    color: white;
+}
+section .Account .profile .personal-informations{
+    margin-top: 20px;
+    padding: 10px 3%;
+    background-color: white;
+}
+section .Account .profile p{
+    color: #3c3c3c;
+    font-size: 11px;
+    line-height: 16px;
+}
+section .Account .profile .profile-title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid gray;
+}
+
+section .btn{
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+section .admin{
+    margin-top: 50px;
+}
+section .btn a{
+    background-color: #c71585;
+    text-decoration: none;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    letter-spacing: 2px;
+}
+.Account .products{
+    margin-top: 20px;
+    background-color: white;
+    position: relative;
+}
+.Account .products a{
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #c71585;
+}
+.Account .products .orders{
+    border-bottom: 2px solid #f8f8f8;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    padding-top: 15px;
+    padding-left: 8px;
+}
+.Account .products .orders .product{
+    display: flex;
+    align-items: center;
+}
+.Account .products .orders .image{
+    width: 80px;
+    margin-left: 20px;
+}
+.Account .products .orders .image img{
+    width: 100%;
+}

@@ -1,0 +1,54 @@
+<head>
+    <link rel="stylesheet" href="<?=asset("css/payment.css");?>" />
+</head>
+<section>
+    <form action="<?=constructUrl('/payment');?>" method="POST">
+        <div class="order-confirmation">
+            <div class="Delivery-method">
+                <h2>Modes de livraison</h2>
+                <div>
+                    <input type="radio" name="shipping" value="Standard">
+                    <label for="Standard">Livraison standard</label>   
+                </div>
+                <div>
+                    <input type="radio" name="shipping" value="Express">
+                    <label for="Express">Livraison express</label>  
+                </div>
+            </div>
+            <div class="payment-method">
+                <h2>Modes de paiement</h2>
+                <div>
+                    <input type="radio" name="payment" value="Paypal">
+                    <label for="paypal">Paypal</label>   
+                </div>
+                <div>
+                    <input type="radio" name="payment" value="Cart credit">
+                    <label for="cart">Cart credit</label>  
+                </div>
+            </div>
+
+        </div>
+
+        <div class="payment">
+            <?php foreach($products as $product) :?>
+                <div class="products">
+                    <div class="image">
+                        <img src="<?=asset('images/' .$product->getImage());?>" alt="teint" /><br>  
+                    </div>
+                    <div class="details-product">
+                        <h2><?= nl2br($product->getTitle());?></h2> 
+                        <p><?= nl2br($product->getDescription());?></p>
+                        <?php if ($product->getQuantity() == $quantities[$index]){?>
+                            <option value="<?=$quantities[$index];?>" selected ><?= "Quantité : ".$quantities[$index];?></option>
+                        <?php } 
+                        else {?>
+                            <option value="<?=$quantities[$index];?>"><?= "Quantité : ".$quantities[$index];?></option>
+                        <?php } ?> 
+                        <h3> <?= nl2br($product->getPrice() * $quantities[$index] ."€");?></h3>
+                    </div>
+                </div>
+            <?php endforeach ?>     
+            <input type="submit" value="Payer <?=$total;?> €"/>
+        </div>
+    </form>
+</section>
