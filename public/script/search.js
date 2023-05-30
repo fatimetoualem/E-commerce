@@ -1,9 +1,3 @@
-const searchInput = document.getElementById('search');
-const container = document.getElementById('container');
-const form = document.querySelector(".form");
-
-searchInput.addEventListener('input', onInputSearch);
-form.addEventListener("submit", onSubmitForm);
 
 function onInputSearch(event)
 {
@@ -13,6 +7,7 @@ function onInputSearch(event)
         return;
     }
     const url = form.dataset.url + '?search=' + encodeURIComponent(search);
+    
     fetch(url)
         .then(function(response) {
             return response.json();
@@ -35,9 +30,20 @@ function onInputSearch(event)
             }
         });
 }
+
+const searchInput = document.getElementById('search');
+const container = document.getElementById('container');
+
+searchInput.addEventListener('input', onInputSearch);
+
 function onSubmitForm(event){
     event.preventDefault();
 }
+
+
+
+const form = document.querySelector(".form");
+form.addEventListener("submit", onSubmitForm);
 
 
 // let resultSearch = document.querySelector(".resultSearch");

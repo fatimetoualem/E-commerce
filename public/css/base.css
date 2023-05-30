@@ -8,7 +8,7 @@
 header{
     position: fixed;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(255, 255, 255);
     top: 0;
     z-index: 2;
 }
@@ -34,7 +34,7 @@ header .form ::placeholder{
 header #container{
     display: grid;
     grid-template-columns: repeat(auto-fill, 300px);
-    background-color: rgb(246, 246, 246);
+    background-color: rgb(255, 255, 255);
     width: 100%;
     grid-gap: 25px;
     justify-content: center;
@@ -43,6 +43,8 @@ header #container .resultSearch{
     display: flex;
     text-decoration: none;
     color: black;
+    border-left: 1px solid rgb(232, 232, 232);
+    padding-left: 15px;
 }
 header #container .resultSearch h2{
     font-size: 17px;

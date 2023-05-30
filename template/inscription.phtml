@@ -31,12 +31,12 @@
                     <p class="errors"> <?= $error["email"];?></p>
                 <?php endif; ?>
                 <label for="password">Mot de passe</label>
-                <input type="texte" name="password" id="password">
+                <input type="password" name="password" id="password">
                 <?php if(isset($error["password"])) : ?>
                     <p class="errors"> <?= $error["password"];?></p>
                 <?php endif; ?>
                 <label for="confrmPassword">Confirmation du mot de Passe</label>
-                <input type="text" name="confrmPassword" id="confrmPassword">
+                <input type="password" name="confrmPassword" id="confrmPassword">
                 <?php if(isset($error["confrmPassword"])) : ?>
                     <p class="errors"> <?= $error["confrmPassword"];?></p>
                 <?php endif; ?>

@@ -23,6 +23,7 @@ section{
     margin: 0px auto;
 }
 .details-panier{
+    padding-top: 50px;
     display: flex;
     justify-content: space-between;
 }

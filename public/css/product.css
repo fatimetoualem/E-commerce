@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 5%;
+    background-color: white;
 }
 .product-details .product-details-left{
     width: 50%;

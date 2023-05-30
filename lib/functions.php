@@ -1,6 +1,6 @@
 <?php
 
-const BASE_URL = '/my_project_mvc/public';
+// const BASE_URL = '/my_project_mvc/public';
 
 function asset(string $path)
 {
