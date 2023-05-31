@@ -2,6 +2,7 @@
     <div class="signUp">
         <div class="formulaire">
             <p class="request-message">Veuillez remplir tous les champs !</p>
+            
             <form action="<?=constructUrl('/inscription')?>" method="POST">
                 <h2><span>Fati</span>Beauty</h2>
                 <div class="gender">
@@ -25,36 +26,43 @@
                 <?php if(isset($error["firstName"])) : ?>
                     <p class="errors"> <?= $error["firstName"];?></p>
                 <?php endif; ?> 
+
                 <label for="email">Adresse mail</label>
                 <input type="texte" name="email" id="email">
                 <?php if(isset($error["email"])) : ?>
                     <p class="errors"> <?= $error["email"];?></p>
                 <?php endif; ?>
+
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password">
                 <?php if(isset($error["password"])) : ?>
                     <p class="errors"> <?= $error["password"];?></p>
                 <?php endif; ?>
+
                 <label for="confrmPassword">Confirmation du mot de Passe</label>
                 <input type="password" name="confrmPassword" id="confrmPassword">
                 <?php if(isset($error["confrmPassword"])) : ?>
                     <p class="errors"> <?= $error["confrmPassword"];?></p>
                 <?php endif; ?>
+
                 <label for="address">Adresse</label>
                 <input type="text" name="address" id="address"/>
                 <?php if(isset($error["address"])) : ?>
                     <p class="errors"> <?= $error["address"];?></p>
                 <?php endif; ?> 
+
                 <label for="postalCode">Code postal</label>
                 <input type="text" name="postalCode" id="postalCode">
                 <?php if(isset($error["postalCode"])) : ?>
                     <p class="errors"> <?= $error["postalCode"];?></p>
                 <?php endif; ?>
+
                 <label for="city">Ville</label>
                 <input type="text" name="city" id="city"/>
                 <?php if(isset($error["city"])) : ?>
                     <p class="errors"> <?= $error["city"];?></p>
                 <?php endif; ?>
+
                 <button>S'inscrire</button>
             </form>
             <p class="information">Vous Avez un Compt ? <a href="<?=constructUrl('/login')?>">Se Connecter</a></p>

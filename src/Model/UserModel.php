@@ -10,7 +10,7 @@ class UserModel extends AbstractModel{
         $sql = 'INSERT INTO users
             (gender, name, firstName, email, address, password, postalCode, city)
             VALUES (?,?,?,?,?,?,?,?)';
-        $this->db->prepareAndExecute($sql, [$gender, $name, $firstName, $email, $address, sha1($password), $postalCode, $city]);    
+        $this->db->prepareAndExecute($sql, [$gender, $name, $firstName, $email, $address, password_hash($password, PASSWORD_DEFAULT), $postalCode, $city]);    
     }
 
     public function verifyMail($email){
@@ -30,19 +30,19 @@ class UserModel extends AbstractModel{
         return $this->convertDbTableToUsertModel($pdoStatement);
     }
 
+    public function getUserById($idUser){
+        $sql = 'SELECT * FROM users
+        WHERE idUser  = ?';
+        $query = $this->db->getOneResult($sql, [$idUser]);     
+        return new User($query);
+    }
+
     public function convertDbTableToUsertModel($dbTable){
         $users = [];
         foreach($dbTable as $line){
             $users[] = new User($line);
         }
         return $users;
-    }
-
-    public function getUserById($idUser){
-        $sql = 'SELECT * FROM users
-        WHERE idUser  = ?';
-        $query = $this->db->getOneResult($sql, [$idUser]);     
-        return new User($query);
     }
 
     public function getUserByEmail($email){
@@ -54,7 +54,6 @@ class UserModel extends AbstractModel{
                 return $customer;
             }
         }
-
         // Ici je sais que je n'ai pas trouvé le client
         return null;
     }
