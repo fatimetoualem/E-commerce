@@ -13,14 +13,6 @@ class OrderModel extends AbstractModel{
         return $base.$year_first_two.$random_number;
     }
 
-    public function convertDbTableToOrderEntity($dbTable){
-        $orders = [];
-        foreach($dbTable as $line){
-            $orders[] = new Order($line);
-        }
-        return $orders;
-    }
-
     public function saveOrder($userId, $total, $address, $payment, $shipping){
         $nOrder = $this->creatNOrder();
         $status = "Prise en compte";
@@ -49,6 +41,14 @@ class OrderModel extends AbstractModel{
         WHERE orderId = ?';
         $query = $this->db->getAllResults($sql, [$idOrder]);  
         return $query;  
+    }
+
+    public function convertDbTableToOrderEntity($dbTable){
+        $orders = [];
+        foreach($dbTable as $line){
+            $orders[] = new Order($line);
+        }
+        return $orders;
     }
 }
 

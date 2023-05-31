@@ -30,9 +30,9 @@ if(!empty($_POST)){
             // 'firstName' => $customer->getFirstName(),
             // 'email' => $customer->getEmail(),
             // 'password' => $customer->getPassword(),
-            // 'address' => $customer->getAddress(),
             // 'postalCode' => $customer->getPostalCode(),
             // 'city' => $customer->getCity(),
+            'address' => $customer->getAddress(),
             'userId' => $customer->getIdUser(),
             'role' =>$customer->getRole()
         ];

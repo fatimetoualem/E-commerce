@@ -11,20 +11,14 @@ if (!isConnected()) {
     exit;
 }
 
-if (array_key_exists('flashbag', $_SESSION) && $_SESSION['flashbag']) {
-
-    $flashMessage = $_SESSION['flashbag'];
-    $_SESSION['flashbag'] = null;
-}
-
 $idProducts = [];
 foreach($_SESSION["cart"] as $element){
     $idProducts[] = $element["idProduct"];
 }
-
 $address = $_SESSION["user"]["address"];
 $userId = $_SESSION['user']['userId'];
 $total = $_SESSION['total'];
+
 if(!empty($_POST["payment"]) && !empty($_POST["shipping"])){
     $payment = $_POST["payment"];
     $shipping = $_POST["shipping"];
@@ -56,7 +50,11 @@ foreach($_SESSION["cart"] as $index => $element){
 
 
 
+if (array_key_exists('flashbag', $_SESSION) && $_SESSION['flashbag']) {
 
+    $flashMessage = $_SESSION['flashbag'];
+    $_SESSION['flashbag'] = null;
+}
 
 header('location' .constructUrl('/validate'));
 
