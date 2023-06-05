@@ -16,15 +16,15 @@ class AdminModel extends AbstractModel{
         $this->db->prepareAndExecute($sql, [$idProduct]);
     }
 
-    public function deleteUserById($idUser){
-        $sql = 'DELETE FROM users WHERE idUser=?';
-        $this->db->prepareAndExecute($sql, [$idUser]);
-    }
-
     public function AddProductToCategory($title, $image, $description, $price, $quantity, $categoryId){
         $sql = 'INSERT INTO products
             (title, image, description, price, quantity, categoryId)
             VALUES (?,?,?,?,?,?)';
         $this->db->prepareAndExecute($sql, [$title, $image, $description, $price, $quantity, $categoryId]); 
+    }
+
+    public function deleteUserById($idUser){
+        $sql = 'DELETE FROM users WHERE idUser=?';
+        $this->db->prepareAndExecute($sql, [$idUser]);
     }
 }

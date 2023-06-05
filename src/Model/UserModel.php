@@ -10,7 +10,7 @@ class UserModel extends AbstractModel{
         $sql = 'INSERT INTO users
             (gender, name, firstName, email, address, password, postalCode, city)
             VALUES (?,?,?,?,?,?,?,?)';
-        $this->db->prepareAndExecute($sql, [$gender, $name, $firstName, $email, $address, password_hash($password, PASSWORD_DEFAULT), $postalCode, $city]);    
+        $this->db->prepareAndExecute($sql, [$gender, $name, $firstName, $email, $address, $password, $postalCode, $city]);    
     }
 
     public function verifyMail($email){
@@ -61,11 +61,12 @@ class UserModel extends AbstractModel{
     public function checkCustomer($email, $password){
         $customer = $this->getUserByEmail($email);
 
+
         // Si le client n'existe pas...
         if ($customer == null) {
             return false;
         }  
-        if (sha1($password) != $customer->getPassword()) {
+        if (!password_verify($password, $customer->getPassword())) {
             return false;
         }
 
@@ -79,7 +80,7 @@ class UserModel extends AbstractModel{
 
     public function editPasswordUder($password, $idUser){
         $sql = 'UPDATE users SET password=? WHERE idUser=?';
-        $this->db->prepareAndExecute($sql, [sha1($password), $idUser]);
+        $this->db->prepareAndExecute($sql, [$password, $idUser]);
     }
 
     public function editEmail($email, $idUser){

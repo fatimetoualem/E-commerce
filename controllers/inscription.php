@@ -12,6 +12,8 @@ if (array_key_exists('flashbag', $_SESSION) && $_SESSION['flashbag']) {
 $error = [];
 $usersModel = new UserModel();
 
+
+$pattern = '/^(?=.*[A-Z])(?=.*[\W_])(?=.*\d).{8,}$/';
 if(!empty($_POST)){
     $gender = htmlspecialchars($_POST["gender"]);
     $name = htmlspecialchars(trim($_POST["name"]));
@@ -40,6 +42,8 @@ if(!empty($_POST)){
 
     if(!$email){
         $error["email"] = "Merci d'indiquer une adresse mail !";
+    }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error['email'] = "L'email n'est pas valide";
     }
 
     if(!$address){
@@ -56,8 +60,8 @@ if(!empty($_POST)){
         $error["confrmPassword"] = "Merci d'indiquer une confirmation de mot de passe !";
     }
 
-    if(strlen($password) < 8){
-        $error["password"] = "Le mot de passe doit comporter au moins 8 caractères";
+    if (!preg_match($pattern, $password)) {
+        $error["password"] = "Le mot de passe invalid";
     }
     elseif($password != $confrmPassword){
         $error["confrmPassword"] = "le mot de passe ne coresspond pas !";
@@ -72,7 +76,7 @@ if(!empty($_POST)){
     }
 
     if(empty($error)){
-        $usersModel->addUsers($gender, $name, $firstName, $email, $address, $password, $postalCode, $city);
+        $usersModel->addUsers($gender, $name, $firstName, $email, $address, password_hash($password, PASSWORD_DEFAULT), $postalCode, $city);
 
         $_SESSION['flashbag'] = 'Votre compte a été créé avec succès.';
     }

@@ -1,9 +1,10 @@
 <?php
+require '../vendor/autoload.php';
 session_start();
 require "../lib/functions.php";
 require "../app/configDb.php";
-require '../vendor/autoload.php';
 
+// recuperation les path URL
 $path = str_replace(BASE_URL, '', $_SERVER['REQUEST_URI']);
 $path = str_replace('/index.php', '', $path);
 $path = explode('?', $path)[0];
@@ -14,7 +15,11 @@ if ($path == '') {
 }
 
 
+
+
 // Routing
+
+// récupere les controllers 
 switch($path) {
     case '/':
         require "../controllers/maquillage.php";

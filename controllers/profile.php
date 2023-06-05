@@ -20,6 +20,9 @@ $customer =  $UserModel->getUserById($userId);
 $orderModel = new OrderModel();
 $orders = $orderModel->getOrdersByUserId($userId);
 
+// dump($orders);
+
+
 $productModel = new ProductModel();
 
 

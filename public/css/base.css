@@ -353,5 +353,23 @@ header .logo::after{
     }
     header{
         padding: 20px 0 10px 0;
-    }    
+    } 
+    .newsletter{
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } 
+    .infos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }  
+    .infos .paiment{
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .newsletter .formullaire_newsletter{
+        width: 80%;
+    }
 }

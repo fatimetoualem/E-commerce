@@ -5,7 +5,7 @@ require "../controllers/compteurPanier.php";
 require "../controllers/link.php";
 
 $error = [];
-$usersController = new UserModel();
+$usersModel = new UserModel();
 
 if(!empty($_POST)){
     $email = trim($_POST["email"]);
@@ -19,7 +19,7 @@ if(!empty($_POST)){
         $error["password"] = "Merci d'indiquer un mot de passe !";
     }
 
-    $customer = $usersController->checkCustomer($email, $password);
+    $customer = $usersModel->checkCustomer($email, $password);
     if (!$customer) {
         $error = 'Identifiants incorrects';
     }

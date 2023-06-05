@@ -7,11 +7,13 @@ function onInputSearch(event)
         return;
     }
     const url = form.dataset.url + '?search=' + encodeURIComponent(search);
-    
+    // Enoie la requete au serveur
     fetch(url)
+        //  recois la reponse de HTTP
         .then(function(response) {
             return response.json();
         })
+        // récuperer les données du reponse
         .then(function(products){
             console.log(products)
             container.innerHTML = '';
@@ -39,8 +41,6 @@ searchInput.addEventListener('input', onInputSearch);
 function onSubmitForm(event){
     event.preventDefault();
 }
-
-
 
 const form = document.querySelector(".form");
 form.addEventListener("submit", onSubmitForm);
