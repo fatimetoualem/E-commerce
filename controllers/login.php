@@ -25,13 +25,6 @@ if(!empty($_POST)){
     }
     else{
         $_SESSION["user"] = [
-            // 'gender' => $customer->getGender(),
-            // 'name' => $customer->getName(),
-            // 'firstName' => $customer->getFirstName(),
-            // 'email' => $customer->getEmail(),
-            // 'password' => $customer->getPassword(),
-            // 'postalCode' => $customer->getPostalCode(),
-            // 'city' => $customer->getCity(),
             'address' => $customer->getAddress(),
             'userId' => $customer->getIdUser(),
             'role' =>$customer->getRole()
@@ -46,6 +39,7 @@ if(!empty($_POST)){
             header('location:' .constructUrl('/admin'));
             exit;
         }
+        
         header('location:' .constructUrl('/profile'));
         exit;
     }
