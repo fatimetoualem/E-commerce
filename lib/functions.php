@@ -21,7 +21,3 @@ function constructUrl(string $path, array $params = [])
 function isConnected(): bool{
     return array_key_exists('user', $_SESSION) && $_SESSION['user'];
 }
-
-// function isConnected(): bool{
-//     return array_key_exists('user', $_SESSION) && $_SESSION['user'];
-// }

@@ -61,8 +61,6 @@ class UserModel extends AbstractModel{
     public function checkCustomer($email, $password){
         $customer = $this->getUserByEmail($email);
 
-
-        // Si le client n'existe pas...
         if ($customer == null) {
             return false;
         }  

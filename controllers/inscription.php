@@ -79,6 +79,8 @@ if(!empty($_POST)){
         $usersModel->addUsers($gender, $name, $firstName, $email, $address, password_hash($password, PASSWORD_DEFAULT), $postalCode, $city);
 
         $_SESSION['flashbag'] = 'Votre compte a été créé avec succès.';
+        header('location:' .constructUrl('/login'));
+        exit;
     }
 }
 
@@ -93,5 +95,6 @@ if(!empty($_POST)){
 //     header('location:' .constructUrl('/maquillage'));
 //     exit;
 // }
+
 $template = "inscription";
 include "../template/base.phtml";
